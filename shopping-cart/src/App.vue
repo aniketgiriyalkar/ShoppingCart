@@ -19,7 +19,7 @@ export default {
   name: "app",
   data: function() {
     return {
-      maximum: 99,
+      maximum: 70,
       sliderStatus: true,
       cart: [],
       products: null
