@@ -449,17 +449,18 @@ deleteItem: function(id) {
     return qty;
   }
 ```
-- Now, we see that the numnbers $0.00 show up which still not correct nut is an inprovement to NaN. While we add these items we are facing some issues which we are not yet aware of. We do the inspect element to study what the problem is in the console. It says that the key isn't defined, so I add the let keyword before the key variable in the for loops. This fixes the total value of the cart which now shows up the card total and price accurately.
+- Now, we see that the numbers $0.00 show up which still not correct nut is an inprovement to NaN. While we add these items we are facing some issues which we are not yet aware of. We do the inspect element to study what the problem is in the console. It says that the key isn't defined, so I add the let keyword before the key variable in the for loops. This fixes the total value of the cart which now shows up the card total and price accurately.
 
 - Now moving on to wiring up the deleting functionality. We inspect the problem and observe that deleteItem isn't a function, which means something to do with the button click event in the navbar component. The deleteItem component exists in the parent and is not accessible inside the navbar.vue. So, here we need to emit so that we go back up the chain.
 ```
   @click.stop="$emit('delete', index)"
 
 ```
-Navbar.vue
+
 - We ensure that the stop modifier is there to prevent the bootstrap dropdown from going back up. Make sure we capture this in the App.vue file. In the navbar we add a @delete event and send that to the deleteItem method that we defined.
 
 ```
+Navbar.vue
 <template>
   <nav class="navbar navbar-light fixed-top">
     <div class="navbar-text ml-auto d-flex">
